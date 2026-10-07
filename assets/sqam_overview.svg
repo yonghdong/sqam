@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 900" width="2000" height="900" role="img">
+<title>SQAM overview. QAM and TRQAM propagate the critic gradient backward with a vector-Jacobian product at every flow step, while SQAM scales the gradient at the final action by the flow time with no vector-Jacobian product.</title>
+<style>
+text { font-family: "Helvetica Neue", Arial, system-ui, sans-serif; fill: #111; }
+.sq-serif { font-family: "Times New Roman", Times, serif; }
+.sq-axis { font-size: 40px; }
+.sq-axis-sm { font-size: 32px; }
+.sq-axis-xs { font-size: 26px; }
+.sq-title { font-size: 64px; font-weight: 700; }
+.sq-sub-title { font-size: 33px; }
+.sq-tau { font-size: 34px; }
+.sq-node-a { font-size: 38px; }
+.sq-grad { font-size: 40px; }
+.sq-sub { font-size: 22px; }
+.sq-sup { font-size: 22px; }
+.sq-jac { font-size: 34px; }
+.sq-cost { font-size: 33px; font-weight: 700; }
+.sq-ink-stroke { stroke: #222; }
+.sq-ink-fill { fill: #222; }
+text{fill:#111}.sq-ink-stroke{stroke:#222}.sq-ink-fill{fill:#222}
+@keyframes sqdraw{to{stroke-dashoffset:0}}@keyframes sqfade{from{opacity:0}to{opacity:1}}
+
+@media (prefers-reduced-motion: reduce){*{animation:none!important}[stroke-dashoffset]{stroke-dashoffset:0!important}[opacity]{opacity:1!important}}
+@media (prefers-color-scheme: dark){.sq-axis,.sq-axis-sm,.sq-axis-xs{fill:#e6e6e6}.sq-ink-stroke{stroke:#e6e6e6}.sq-ink-fill{fill:#e6e6e6}}
+</style>
+
+  
+  <g class="all">
+<text class="sq-axis" x="548" y="42" text-anchor="middle" >Noises</text>
+<text class="sq-axis-sm sq-serif" x="548" y="80" text-anchor="middle" >τ = 0</text>
+<line class="sq-ink-stroke" x1="648" y1="40" x2="1330" y2="40" stroke-width="3" />
+<polygon class="sq-ink-fill" points="1358,40 1328,28 1328,52" />
+<text class="sq-axis-xs" x="1000" y="72" text-anchor="middle" >denoising</text>
+<text class="sq-axis" x="1455" y="42" text-anchor="middle" >Actions</text>
+<text class="sq-axis-sm sq-serif" x="1455" y="80" text-anchor="middle" >τ = 1</text>
+<defs><linearGradient id="sqg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f1f2f0"/><stop offset="1" stop-color="#f1f2f0"/></linearGradient></defs>
+<rect x="4" y="104" width="972" height="786" rx="22" fill="url(#sqg1)" stroke="#6e6b65" stroke-opacity=".55" stroke-width="3" />
+<text class="sq-title" x="492" y="186" text-anchor="middle" >QAM / TRQAM</text>
+<text class="sq-sub-title" x="492" y="232" text-anchor="middle" >Exact adjoint (Full Jacobian)</text>
+<g opacity="0" style="animation:sqfade 0.5s ease-in-out 1.3s both"><ellipse cx="835" cy="497" rx="125" ry="178" fill="none" stroke="#6e6b65" stroke-opacity=".28" stroke-width="2" transform="rotate(-8 835 497)" /><ellipse cx="835" cy="497" rx="98" ry="142" fill="none" stroke="#6e6b65" stroke-opacity=".28" stroke-width="2" transform="rotate(-8 835 497)" /><ellipse cx="835" cy="497" rx="72" ry="106" fill="none" stroke="#6e6b65" stroke-opacity=".28" stroke-width="2" transform="rotate(-8 835 497)" /><ellipse cx="835" cy="497" rx="46" ry="70" fill="none" stroke="#6e6b65" stroke-opacity=".28" stroke-width="2" transform="rotate(-8 835 497)" /><ellipse cx="835" cy="497" rx="22" ry="36" fill="none" stroke="#6e6b65" stroke-opacity=".28" stroke-width="2" transform="rotate(-8 835 497)" /></g>
+<path pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" style="animation:sqdraw 1.1s ease-in-out 0.2s both" d="M 105 622 C 190 596, 220 575, 275 568 C 330 560, 380 545, 435 547 C 500 549, 550 570, 605 573 C 665 577, 718 578, 783 568" stroke="#6e6b65" stroke-width="4" fill="none" />
+<g opacity="0" style="animation:sqfade 0.25s ease-in-out 0.2s both"><text class="sq-tau sq-serif" x="78" y="562" text-anchor="middle" >z ~ 𝒩</text></g>
+<g class=""><path pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" style="animation:sqdraw 0.4s ease-in-out 1.5s both" d="M 783.0 568.0 L 867.7 400.3" stroke="#6e6b65" stroke-width="9" fill="none" stroke-linecap="round" /><g opacity="0" style="animation:sqfade 0.15s ease-in-out 1.8499999999999999s both"><polygon class="" points="0,0 -26,-11.7 -26,11.7" fill="#6e6b65" transform="translate(880.0 376.0) rotate(-63.2)" /></g></g>
+<g opacity="0" style="animation:sqfade 0.3s ease-in-out 1.6s both"><text class="sq-grad sq-serif" x="835" y="306" text-anchor="middle" >∇<tspan class="sq-sub" dy="8">a</tspan><tspan dy="-8">Q(s, a)</tspan></text></g>
+<g opacity="0" style="animation:sqfade 0.35s ease-in-out 2.1s both"><path d="M 768 684 Q 698.0 746 628 690" stroke="#b3b0aa" stroke-width="3" stroke-dasharray="9 8" fill="none" /></g>
+<g opacity="0" style="animation:sqfade 0.15s ease-in-out 2.4s both"><polygon class="" points="0,0 -16,-7.2 -16,7.2" fill="#b3b0aa" transform="translate(628.0 690.0) rotate(-154.1)" /></g>
+<g opacity="0" style="animation:sqfade 0.25s ease-in-out 2.25s both"><text class="sq-jac sq-serif" x="697" y="772" text-anchor="middle">J<tspan class="sq-sup" dy="-18">T</tspan><tspan class="sq-sub" dx="-14" dy="34">1</tspan></text></g>
+<g opacity="0" style="animation:sqfade 0.35s ease-in-out 2.45s both"><path d="M 605.0 573.0 L 708.7 367.7" stroke="#b3b0aa" stroke-width="3" stroke-dasharray="10 9" fill="none" /><polygon class="" points="0,0 -14,-6.3 -14,6.3" fill="#b3b0aa" transform="translate(708.7 367.7) rotate(-63.2)" /></g>
+<g class=""><path pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" style="animation:sqdraw 0.3s ease-in-out 2.5s both" d="M 605.0 573.0 L 694.5 509.0" stroke="#6e6b65" stroke-width="8" fill="none" stroke-linecap="round" /><g opacity="0" style="animation:sqfade 0.15s ease-in-out 2.75s both"><polygon class="" points="0,0 -26,-11.7 -26,11.7" fill="#6e6b65" transform="translate(711.5 497.0) rotate(-35.5)" /></g></g>
+<g opacity="0" style="animation:sqfade 0.35s ease-in-out 2.85s both"><path d="M 590 684 Q 525.0 746 460 690" stroke="#b3b0aa" stroke-width="3" stroke-dasharray="9 8" fill="none" /></g>
+<g opacity="0" style="animation:sqfade 0.15s ease-in-out 3.15s both"><polygon class="" points="0,0 -16,-7.2 -16,7.2" fill="#b3b0aa" transform="translate(460.0 690.0) rotate(-152.4)" /></g>
+<g opacity="0" style="animation:sqfade 0.25s ease-in-out 3.0s both"><text class="sq-jac sq-serif" x="522" y="772" text-anchor="middle">J<tspan class="sq-sup" dy="-18">T</tspan><tspan class="sq-sub" dx="-14" dy="34">2</tspan></text></g>
+<g opacity="0" style="animation:sqfade 0.35s ease-in-out 3.2s both"><path d="M 435.0 547.0 L 538.7 341.7" stroke="#b3b0aa" stroke-width="3" stroke-dasharray="10 9" fill="none" /><polygon class="" points="0,0 -14,-6.3 -14,6.3" fill="#b3b0aa" transform="translate(538.7 341.7) rotate(-63.2)" /></g>
+<g class=""><path pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" style="animation:sqdraw 0.3s ease-in-out 3.25s both" d="M 435.0 547.0 L 445.8 423.8" stroke="#6e6b65" stroke-width="8" fill="none" stroke-linecap="round" /><g opacity="0" style="animation:sqfade 0.15s ease-in-out 3.5s both"><polygon class="" points="0,0 -26,-11.7 -26,11.7" fill="#6e6b65" transform="translate(447.7 403.1) rotate(-85.0)" /></g></g>
+<g opacity="0" style="animation:sqfade 0.35s ease-in-out 3.6s both"><path d="M 420 684 Q 360.0 746 300 690" stroke="#b3b0aa" stroke-width="3" stroke-dasharray="9 8" fill="none" /></g>
+<g opacity="0" style="animation:sqfade 0.15s ease-in-out 3.9s both"><polygon class="" points="0,0 -16,-7.2 -16,7.2" fill="#b3b0aa" transform="translate(300.0 690.0) rotate(-150.5)" /></g>
+<g opacity="0" style="animation:sqfade 0.25s ease-in-out 3.75s both"><text class="sq-jac sq-serif" x="357" y="772" text-anchor="middle">J<tspan class="sq-sup" dy="-18">T</tspan><tspan class="sq-sub" dx="-14" dy="34">3</tspan></text></g>
+<g opacity="0" style="animation:sqfade 0.35s ease-in-out 3.95s both"><path d="M 275.0 568.0 L 378.7 362.7" stroke="#b3b0aa" stroke-width="3" stroke-dasharray="10 9" fill="none" /><polygon class="" points="0,0 -14,-6.3 -14,6.3" fill="#b3b0aa" transform="translate(378.7 362.7) rotate(-63.2)" /></g>
+<g class=""><path pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" style="animation:sqdraw 0.3s ease-in-out 4.0s both" d="M 275.0 568.0 L 239.8 495.6" stroke="#6e6b65" stroke-width="8" fill="none" stroke-linecap="round" /><g opacity="0" style="animation:sqfade 0.15s ease-in-out 4.25s both"><polygon class="" points="0,0 -26,-11.7 -26,11.7" fill="#6e6b65" transform="translate(230.7 476.9) rotate(-115.9)" /></g></g>
+<g opacity="0" style="animation:sqfade 0.35s ease-in-out 4.35s both"><path d="M 262 684 Q 197.0 746 132 690" stroke="#b3b0aa" stroke-width="3" stroke-dasharray="9 8" fill="none" /></g>
+<g opacity="0" style="animation:sqfade 0.15s ease-in-out 4.65s both"><polygon class="" points="0,0 -16,-7.2 -16,7.2" fill="#b3b0aa" transform="translate(132.0 690.0) rotate(-152.4)" /></g>
+<g opacity="0" style="animation:sqfade 0.25s ease-in-out 4.5s both"><text class="sq-jac sq-serif" x="192" y="772" text-anchor="middle">J<tspan class="sq-sup" dy="-18">T</tspan><tspan class="sq-sub" dx="-14" dy="34">4</tspan></text></g>
+<g opacity="0" style="animation:sqfade 0.35s ease-in-out 4.699999999999999s both"><path d="M 105.0 622.0 L 208.7 416.7" stroke="#b3b0aa" stroke-width="3" stroke-dasharray="10 9" fill="none" /><polygon class="" points="0,0 -14,-6.3 -14,6.3" fill="#b3b0aa" transform="translate(208.7 416.7) rotate(-63.2)" /></g>
+<g class=""><path pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" style="animation:sqdraw 0.3s ease-in-out 4.75s both" d="M 105.0 622.0 L 159.3 604.6" stroke="#6e6b65" stroke-width="8" fill="none" stroke-linecap="round" /><g opacity="0" style="animation:sqfade 0.15s ease-in-out 5.0s both"><polygon class="" points="0,0 -26,-11.7 -26,11.7" fill="#6e6b65" transform="translate(179.1 598.2) rotate(-17.8)" /></g></g>
+<g opacity="0" style="animation:sqfade 0.25s ease-in-out 0.2s both"><circle cx="105" cy="622" r="19" fill="#ffffff" stroke="#6e6b65" stroke-width="4" /><text class="sq-tau sq-serif" x="110" y="672" text-anchor="middle" >τ = 0</text></g>
+<g opacity="0" style="animation:sqfade 0.25s ease-in-out 0.48s both"><circle cx="275" cy="568" r="19" fill="#ffffff" stroke="#6e6b65" stroke-width="4" /><text class="sq-tau sq-serif" x="278" y="632" text-anchor="middle" >τ = 0.25</text></g>
+<g opacity="0" style="animation:sqfade 0.25s ease-in-out 0.75s both"><circle cx="435" cy="547" r="19" fill="#ffffff" stroke="#6e6b65" stroke-width="4" /><text class="sq-tau sq-serif" x="440" y="610" text-anchor="middle" >τ = 0.5</text></g>
+<g opacity="0" style="animation:sqfade 0.25s ease-in-out 1.03s both"><circle cx="605" cy="573" r="19" fill="#ffffff" stroke="#6e6b65" stroke-width="4" /><text class="sq-tau sq-serif" x="610" y="636" text-anchor="middle" >τ = 0.75</text></g>
+<g opacity="0" style="animation:sqfade 0.25s ease-in-out 1.3s both"><circle cx="783" cy="568" r="27" fill="#ffffff" stroke="#6e6b65" stroke-width="4" /><text class="sq-node-a" x="783" y="581" text-anchor="middle" >a</text><text class="sq-tau sq-serif" x="790" y="632" text-anchor="middle" >τ = 1</text></g>
+<g opacity="0" style="animation:sqfade 0.4s ease-in-out 5.2s both"><text class="sq-cost" x="492" y="842" text-anchor="middle" >Propagation cost: VJP at every flow step</text></g>
+<defs><linearGradient id="sqg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f8fbff"/><stop offset="1" stop-color="#e8f1fe"/></linearGradient></defs>
+<rect x="1021" y="104" width="972" height="786" rx="22" fill="url(#sqg2)" stroke="#1a6ef0" stroke-opacity=".55" stroke-width="3" />
+<text class="sq-title" x="1509" y="186" text-anchor="middle" >SQAM</text>
+<text class="sq-sub-title" x="1509" y="232" text-anchor="middle" >Scalar adjoint (Isotropic Jacobian)</text>
+<g opacity="0" style="animation:sqfade 0.5s ease-in-out 1.3s both"><ellipse cx="1852" cy="497" rx="125" ry="178" fill="none" stroke="#1a6ef0" stroke-opacity=".28" stroke-width="2" transform="rotate(-8 1852 497)" /><ellipse cx="1852" cy="497" rx="98" ry="142" fill="none" stroke="#1a6ef0" stroke-opacity=".28" stroke-width="2" transform="rotate(-8 1852 497)" /><ellipse cx="1852" cy="497" rx="72" ry="106" fill="none" stroke="#1a6ef0" stroke-opacity=".28" stroke-width="2" transform="rotate(-8 1852 497)" /><ellipse cx="1852" cy="497" rx="46" ry="70" fill="none" stroke="#1a6ef0" stroke-opacity=".28" stroke-width="2" transform="rotate(-8 1852 497)" /><ellipse cx="1852" cy="497" rx="22" ry="36" fill="none" stroke="#1a6ef0" stroke-opacity=".28" stroke-width="2" transform="rotate(-8 1852 497)" /></g>
+<path pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" style="animation:sqdraw 1.1s ease-in-out 0.2s both" d="M 1122 622 C 1207 596, 1237 575, 1292 568 C 1347 560, 1397 545, 1452 547 C 1517 549, 1567 570, 1622 573 C 1682 577, 1735 578, 1800 568" stroke="#1a6ef0" stroke-width="4" fill="none" />
+<g opacity="0" style="animation:sqfade 0.25s ease-in-out 0.2s both"><text class="sq-tau sq-serif" x="1095" y="562" text-anchor="middle" >z ~ 𝒩</text></g>
+<g class=""><path pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" style="animation:sqdraw 0.4s ease-in-out 1.5s both" d="M 1800.0 568.0 L 1884.7 400.3" stroke="#1a6ef0" stroke-width="9" fill="none" stroke-linecap="round" /><g opacity="0" style="animation:sqfade 0.15s ease-in-out 1.8499999999999999s both"><polygon class="" points="0,0 -26,-11.7 -26,11.7" fill="#1a6ef0" transform="translate(1897.0 376.0) rotate(-63.2)" /></g></g>
+<g opacity="0" style="animation:sqfade 0.3s ease-in-out 1.6s both"><text class="sq-grad sq-serif" x="1852" y="306" text-anchor="middle" >∇<tspan class="sq-sub" dy="8">a</tspan><tspan dy="-8">Q(s, a)</tspan></text></g>
+<g opacity="0" style="animation:sqfade 0.35s ease-in-out 2.1s both"><path d="M 1122.0 622.0 L 1225.7 416.7" stroke="#8fb5f2" stroke-width="3" stroke-dasharray="10 9" fill="none" /><polygon class="" points="0,0 -14,-6.3 -14,6.3" fill="#8fb5f2" transform="translate(1225.7 416.7) rotate(-63.2)" /></g>
+<g opacity="0" style="animation:sqfade 0.35s ease-in-out 2.1s both"><path d="M 1292.0 568.0 L 1395.7 362.7" stroke="#8fb5f2" stroke-width="3" stroke-dasharray="10 9" fill="none" /><polygon class="" points="0,0 -14,-6.3 -14,6.3" fill="#8fb5f2" transform="translate(1395.7 362.7) rotate(-63.2)" /></g>
+<g class=""><path pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" style="animation:sqdraw 0.3s ease-in-out 2.15s both" d="M 1292.0 568.0 L 1314.5 523.4" stroke="#1a6ef0" stroke-width="8" fill="none" stroke-linecap="round" /><g opacity="0" style="animation:sqfade 0.15s ease-in-out 2.4s both"><polygon class="" points="0,0 -26,-11.7 -26,11.7" fill="#1a6ef0" transform="translate(1320.3 512.0) rotate(-63.2)" /></g></g>
+<g opacity="0" style="animation:sqfade 0.35s ease-in-out 2.1s both"><path d="M 1452.0 547.0 L 1555.7 341.7" stroke="#8fb5f2" stroke-width="3" stroke-dasharray="10 9" fill="none" /><polygon class="" points="0,0 -14,-6.3 -14,6.3" fill="#8fb5f2" transform="translate(1555.7 341.7) rotate(-63.2)" /></g>
+<g class=""><path pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" style="animation:sqdraw 0.3s ease-in-out 2.15s both" d="M 1452.0 547.0 L 1491.4 469.1" stroke="#1a6ef0" stroke-width="8" fill="none" stroke-linecap="round" /><g opacity="0" style="animation:sqfade 0.15s ease-in-out 2.4s both"><polygon class="" points="0,0 -26,-11.7 -26,11.7" fill="#1a6ef0" transform="translate(1500.0 451.9) rotate(-63.2)" /></g></g>
+<g opacity="0" style="animation:sqfade 0.35s ease-in-out 2.1s both"><path d="M 1622.0 573.0 L 1725.7 367.7" stroke="#8fb5f2" stroke-width="3" stroke-dasharray="10 9" fill="none" /><polygon class="" points="0,0 -14,-6.3 -14,6.3" fill="#8fb5f2" transform="translate(1725.7 367.7) rotate(-63.2)" /></g>
+<g class=""><path pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" style="animation:sqdraw 0.3s ease-in-out 2.15s both" d="M 1622.0 573.0 L 1681.1 456.0" stroke="#1a6ef0" stroke-width="8" fill="none" stroke-linecap="round" /><g opacity="0" style="animation:sqfade 0.15s ease-in-out 2.4s both"><polygon class="" points="0,0 -26,-11.7 -26,11.7" fill="#1a6ef0" transform="translate(1689.8 438.9) rotate(-63.2)" /></g></g>
+<g opacity="0" style="animation:sqfade 0.3s ease-in-out 2.4s both"><text class="sq-grad sq-serif" x="1422" y="340" text-anchor="middle" >τ ∇<tspan class="sq-sub" dy="8">a</tspan><tspan dy="-8">Q(s, a)</tspan></text></g>
+<g opacity="0" style="animation:sqfade 0.25s ease-in-out 0.2s both"><circle cx="1122" cy="622" r="19" fill="#ffffff" stroke="#1a6ef0" stroke-width="4" /><text class="sq-tau sq-serif" x="1127" y="672" text-anchor="middle" >τ = 0</text></g>
+<g opacity="0" style="animation:sqfade 0.25s ease-in-out 0.48s both"><circle cx="1292" cy="568" r="19" fill="#ffffff" stroke="#1a6ef0" stroke-width="4" /><text class="sq-tau sq-serif" x="1295" y="632" text-anchor="middle" >τ = 0.25</text></g>
+<g opacity="0" style="animation:sqfade 0.25s ease-in-out 0.75s both"><circle cx="1452" cy="547" r="19" fill="#ffffff" stroke="#1a6ef0" stroke-width="4" /><text class="sq-tau sq-serif" x="1457" y="610" text-anchor="middle" >τ = 0.5</text></g>
+<g opacity="0" style="animation:sqfade 0.25s ease-in-out 1.03s both"><circle cx="1622" cy="573" r="19" fill="#ffffff" stroke="#1a6ef0" stroke-width="4" /><text class="sq-tau sq-serif" x="1627" y="636" text-anchor="middle" >τ = 0.75</text></g>
+<g opacity="0" style="animation:sqfade 0.25s ease-in-out 1.3s both"><circle cx="1800" cy="568" r="27" fill="#ffffff" stroke="#1a6ef0" stroke-width="4" /><text class="sq-node-a" x="1800" y="581" text-anchor="middle" >a</text><text class="sq-tau sq-serif" x="1807" y="632" text-anchor="middle" >τ = 1</text></g>
+<g opacity="0" style="animation:sqfade 0.4s ease-in-out 2.6s both"><text class="sq-cost" x="1509" y="842" text-anchor="middle" >Propagation cost: no VJP</text></g>
+  </g>
+</svg>
