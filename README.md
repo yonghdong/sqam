@@ -82,13 +82,13 @@ Like the network size, `horizon_length` changes the (chunked) action dimension, 
 
 ### Step 1: BC pretraining (300K steps)
 
-Train a BC-only flow policy with the TRQAM agent (`agents/trqam.py --bc_only=True`). The resulting checkpoint at `exp/trqam/bc_pretrain/<env_name>/<exp_name>/params_300000.pkl` is reusable across SQAM, TRQAM, QAM, QAM-E, FQL, DSRL, CGQL, IFQL.
+Train a BC-only flow policy with the SQAM agent (`agents/sqam.py --bc_only=True`). The resulting checkpoint at `exp/sqam/bc_pretrain/<env_name>/<exp_name>/params_300000.pkl` is reusable across SQAM, TRQAM, QAM, QAM-E, FQL, DSRL, CGQL, IFQL.
 
 <details>
 <summary>Example command (<code>cube-triple-task2</code>)</summary>
 
 ```bash
-MUJOCO_GL=egl python main.py --run_group=bc_pretrain --agent=agents/trqam.py --tags=BC --seed=10001 \
+MUJOCO_GL=egl python main.py --run_group=bc_pretrain --agent=agents/sqam.py --tags=BC --seed=10001 \
   --env_name=cube-triple-play-singletask-task2-v0 --sparse=False --horizon_length=5 \
   --ogbench_dataset_dir=~/.ogbench/data/cube-triple-play-10m-v0 \
   --agent.action_chunking=True --bc_only=True --offline_steps=300000 --online_steps=0 \
@@ -136,7 +136,7 @@ Load the BC checkpoint via `--pretrained_actor_path`. Network-size flags must ma
 
 ```bash
 # Path to the BC checkpoint from Step 1, or the downloaded one
-BC_CKPT=exp/trqam/bc_pretrain/cube-triple-play-singletask-task2-v0/<exp_name>/params_300000.pkl
+BC_CKPT=exp/sqam/bc_pretrain/cube-triple-play-singletask-task2-v0/<exp_name>/params_300000.pkl
 # BC_CKPT=bc_checkpoints/cube-triple-play/params_300000.pkl
 
 # Common flags
@@ -172,7 +172,7 @@ MUJOCO_GL=egl python main.py --run_group=reproduce --agent=agents/qam.py --tags=
 
 **Download from Hugging Face:**
 ```bash
-conda activate trqam
+conda activate sqam
 pip install huggingface_hub
 
 python -c "
